@@ -335,8 +335,8 @@ function renderCourses(courses) {
     tbody.innerHTML = courses.map(course => `
         <tr>
             <td>${course.id}</td>
-            <td><span class="badge bg-secondary">${course.code || '-'}</span></td>
-            <td><strong>${course.name || '-'}</strong></td>
+            <td><span class="badge bg-secondary">${course.courseCode || '-'}</span></td>
+            <td><strong>${course.title || '-'}</strong></td>
             <td><span class="badge bg-warning text-dark">${course.credits || '-'}</span></td>
             <td>${course.departmentName || '-'}</td>
             <td>${course.teacherName || '-'}</td>
@@ -413,8 +413,8 @@ async function editCourse(id) {
     try {
         const course = await CoursesAPI.getById(id);
         document.getElementById('courseId').value = course.id;
-        document.getElementById('courseCode').value = course.code || '';
-        document.getElementById('courseName').value = course.name || '';
+        document.getElementById('courseCode').value = course.courseCode || '';
+        document.getElementById('courseName').value = course.title || '';
         document.getElementById('courseDescription').value = course.description || '';
         document.getElementById('courseCredits').value = course.credits || '';
         document.getElementById('courseDepartment').value = course.departmentId || '';
@@ -432,8 +432,8 @@ async function saveCourse() {
     errorDiv.classList.add('d-none');
     
     const courseData = {
-        code: document.getElementById('courseCode').value,
-        name: document.getElementById('courseName').value,
+        courseCode: document.getElementById('courseCode').value,
+        title: document.getElementById('courseName').value,
         description: document.getElementById('courseDescription').value,
         credits: parseInt(document.getElementById('courseCredits').value),
         departmentId: parseInt(document.getElementById('courseDepartment').value) || null
