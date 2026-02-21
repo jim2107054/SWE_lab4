@@ -38,6 +38,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/error").permitAll()
+                        // Static resources
+                        .requestMatchers("/index.html", "/css/**", "/js/**", "/images/**", "/favicon.ico").permitAll()
                         
                         // Course endpoints - Teachers can create, update, delete
                         .requestMatchers(HttpMethod.POST, "/api/courses/**").hasRole("TEACHER")
