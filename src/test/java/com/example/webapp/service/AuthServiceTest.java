@@ -115,7 +115,6 @@ class AuthServiceTest {
             when(studentRepository.save(any(Student.class))).thenReturn(savedStudent);
             
             Authentication auth = mock(Authentication.class);
-            when(auth.getPrincipal()).thenReturn(savedStudent);
             when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class))).thenReturn(auth);
             when(jwtTokenProvider.generateToken(any(Authentication.class))).thenReturn("jwt-token");
 
@@ -144,7 +143,6 @@ class AuthServiceTest {
             when(teacherRepository.save(any(Teacher.class))).thenReturn(savedTeacher);
             
             Authentication auth = mock(Authentication.class);
-            when(auth.getPrincipal()).thenReturn(savedTeacher);
             when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class))).thenReturn(auth);
             when(jwtTokenProvider.generateToken(any(Authentication.class))).thenReturn("jwt-token");
 

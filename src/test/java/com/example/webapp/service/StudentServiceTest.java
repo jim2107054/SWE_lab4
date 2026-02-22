@@ -53,14 +53,14 @@ class StudentServiceTest {
             Student s1 = createTestStudent(1L, "student1", "STU-001");
             Student s2 = createTestStudent(2L, "student2", "STU-002");
 
-            when(studentRepository.findAll()).thenReturn(List.of(s1, s2));
+            when(studentRepository.findAllWithCourses()).thenReturn(List.of(s1, s2));
 
             List<StudentDTO> students = studentService.getAllStudents();
 
             assertEquals(2, students.size());
             assertEquals("STU-001", students.get(0).getRoll());
             assertEquals("STU-002", students.get(1).getRoll());
-            verify(studentRepository).findAll();
+            verify(studentRepository).findAllWithCourses();
         }
     }
 
